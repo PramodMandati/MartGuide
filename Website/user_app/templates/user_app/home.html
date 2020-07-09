@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}MartGuide | {{block.super}}{% endblock %}
+{% block head_style %}
+    label{
+        color:white;
+    }
+    *{
+        margin:0;
+        padding:0;
+        outline:0;
+    }
+    body{
+        background-image:url("{% static 'abc2.jpg' %}");
+        background-size:100% 100vh;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        margin:0;
+        padding:0;
+    }
+    .center_div{
+        width:100%;
+        min-height:100vh;
+        max-height:100%;
+        color:white;
+        position:absolute;
+        left:0;
+        top:0;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:0 20px 0 20px;
+    }
+{% endblock %}
+{% block main_content %}
+{% include 'nav.html' with user=user %}
+<div class="center_div">
+    <h2>MartGuide</h2>
+    <p>
+        YRP Tech provides a application for shops. The application is useful for any type of shops. The features of the application is to storing
+        the data of the items list in the shop and their prices. The shop owners can calculate the total amount of the items purchased by the customers.
+        The application also shows the items which are taken with other items. By these the shop owners can keep offers on the items which are taken
+        by the other items. These will help in the increase of sales.
+    </p>
+</div>
+{% endblock %}

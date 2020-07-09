@@ -1,0 +1,45 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background-color: #e3f2fd">
+  <a class="navbar-brand" href="/home">
+    <img src="{% static 'web/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+    YRP Tech
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% if not user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:home_url' %}">Home</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:register_url' %}">Register</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:login_url' %}">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:contact_url' %}">Contact</a>
+        </li>
+      {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:login_home_url' %}">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:download_page_url' %}">Download</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:password_url' %}">Password</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'user_app_name:logout_url' %}">Logout</a>
+        </li>
+      {% endif %}
+    </ul>
+    {% if user.is_authenticated %}
+      <span class="navbar-text" style="color:white;">Hi, {{user.get_full_name}}</span>
+    {% endif %}
+  </div>
+</nav>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}MartGuide | {{block.super}}{% endblock %}
+{% block head_style %}
+    label{
+        color:white;
+    }
+    *{
+        margin:0;
+        padding:0;
+        outline:0;
+    }
+    body{
+        background-image:url("{% static 'abc2.jpg' %}");
+        background-size:100% 100vh;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        margin:0;
+        padding:0;
+    }
+    .center_div{
+        font-size:20px;
+        width:100%;
+        min-height:100vh;
+        max-height:100%;
+        color:white;
+        position:absolute;
+        left:0;
+        top:0;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:0 20px 0 20px;
+    }
+    .my_img{
+        width:40px;
+        height:40px;
+        margin:0px 5px 0px 5px;
+        box-shadow:0 0 5px 3px white;
+    }
+{% endblock %}
+{% block main_content %}
+{% include 'nav.html' with user=user %}
+<div class="center_div">
+    <h3>Successfully Registered</h3>
+    <p>Verification mail is send to your registered email, the mail is valid for 10 minutes</p>
+</div>
+{% endblock %}

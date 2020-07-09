@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}MartGuide | {{block.super}}{% endblock %}
+{% block head_style %}
+    label{
+        color:white;
+    }
+    *{
+        margin:0;
+        padding:0;
+        outline:0;
+    }
+    body{
+        background-image:url("{% static 'abc2.jpg' %}");
+        background-size:100% 100vh;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        margin:0;
+        padding:0;
+    }
+    .center_div{
+        font-size:20px;
+        width:100%;
+        min-height:100vh;
+        max-height:100%;
+        color:white;
+        position:absolute;
+        left:0;
+        top:0;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:0 20px 0 20px;
+    }
+    .my_img{
+        width:40px;
+        height:40px;
+        margin:0px 5px 0px 5px;
+        box-shadow:0 0 5px 3px white;
+    }
+    .bg-model{
+        width:100%;
+        height:100%;
+        background-color:rgba(0,0,0,0.5);
+        position:absolute;
+        top:0;
+        left:0;
+        display:none;
+        justify-content:center;
+        align-items:center;
+    }
+    .box_content{
+        width:500px;
+        height:300px;
+        background-color:#C2CAD0;
+        position:relative;
+        border-radius:2%;
+    }
+    .box_content .plus_cross{
+        position:absolute;
+        top:-4px;
+        right:8px;
+        transform:rotate(45deg);
+        cursor:pointer;
+    }
+{% endblock %}
+{% block main_content %}
+{% include 'nav.html' with user=user %}
+<div class="center_div">
+    <button class="btn btn-primary" id="clic">Download</button>
+    <p>Download latest version MartGuide-v.1.0</p>
+    <div class="bg-model">
+        <div class="box_content">
+            <span class="plus_cross" style="font-size:30px;color:black;">+</span>
+            <p style="font-size:15px;color:black;margin-top:50px;margin-left:10px;margin-right:10px">You can download the application but you have to upgrade your account to premium
+            to get access to the application. For premium account,please pay RS.XXXX to the number 9652150170 by any payment method through your registered mobile number.
+            Then our techinical team make your account premium.</p>
+            <a href="{% url 'user_app_name:download_url' %}" style="cursor:pointer;"><button class="btn btn-primary">Download</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block my_js %}
+    let btn=document.getElementById("clic")
+    btn.addEventListener("click",function(){
+        document.getElementsByClassName("bg-model")[0].style.display="flex";
+    });
+    let btnc=document.getElementsByClassName("plus_cross")[0]
+    btnc.addEventListener("click",function(){
+        document.getElementsByClassName("bg-model")[0].style.display="none";
+    });
+{% endblock %}
